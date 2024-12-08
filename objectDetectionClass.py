@@ -20,7 +20,7 @@ net.setInputMean((127.5, 127.5, 127.5))
 net.setInputSwapRB(True)
 
 
-def nesneleriBul(img, thres, draw=True, objects=[]):
+def objrctDetect(img, thres, draw=True, objects=[]):
     classIds, confs, bbox = net.detect(img,confThreshold=thres,nmsThreshold=0.2)
     print(classIds,bbox)
     objectInfo = []
@@ -46,7 +46,7 @@ if __name__ == "__main__":
 
     while True:
         success, img = cap.read()
-        sonuc,objectInfo = nesneleriBul(img, 0.45, objects=["portakal", "makas"])
+        sonuc,objectInfo = objrctDetect(img, 0.45, objects=["portakal"])
         #print(objectInfo)
 
         cv2.imshow("Output", img)
